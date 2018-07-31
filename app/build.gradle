@@ -13,6 +13,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "APP_ID", "\"${System.env.MIKUTTER_FCM_APP_ID}\"")
         buildConfigField("String", "API_KEY", "\"${System.env.MIKUTTER_FCM_API_KEY}\"")
+        resValue("string", "google_app_id", "\"${System.env.MIKUTTER_FCM_APP_ID}\"")
     }
     buildTypes {
         release {

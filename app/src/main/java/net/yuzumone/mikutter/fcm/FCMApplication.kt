@@ -12,7 +12,7 @@ class FCMApplication : Application() {
         FirebaseApp.initializeApp(this, FirebaseOptions.Builder()
                 .setApplicationId(BuildConfig.APP_ID)
                 .setApiKey(BuildConfig.API_KEY)
-                .build())
+                .build(), getString(R.string.app_name))
         FirebaseAnalytics.getInstance(this)
     }
 }
