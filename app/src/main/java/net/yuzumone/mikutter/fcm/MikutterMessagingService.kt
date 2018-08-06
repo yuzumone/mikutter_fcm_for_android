@@ -14,19 +14,25 @@ import com.google.firebase.messaging.RemoteMessage
 import java.util.concurrent.atomic.AtomicInteger
 import android.app.NotificationChannel
 import android.os.Build
+import net.yuzumone.mikutter.fcm.entity.MikutterMessage
+import java.util.*
 
 class MikutterMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage?) {
         super.onMessageReceived(message)
         val data = message?.data ?: return
-        val title = data["title"] ?: ""
-        val body = data["body"] ?: ""
-        val url = data["url"] ?: ""
-        createNotification(title, body, url)
+        val mikutterMessage = MikutterMessage(data, Date())
+        createNotification(mikutterMessage)
+        saveMessage(mikutterMessage)
     }
 
-    private fun createNotification(title: String, body: String, url :String) {
+    private fun saveMessage(message: MikutterMessage) {
+        val dao = FCMApplication.database.messageDao()
+        dao.insert(message)
+    }
+
+    private fun createNotification(message: MikutterMessage) {
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val id = getString(R.string.channel_id)
         val name = getString(R.string.channel_name)
@@ -41,12 +47,12 @@ class MikutterMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, id)
                 .setSmallIcon(android.R.drawable.ic_menu_send)
-                .setContentTitle(title)
-                .setContentText(body)
+                .setContentTitle(message.title)
+                .setContentText(message.body)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-        if (url.isNotBlank()) {
-            notificationBuilder.addAction(createAction(url))
+        if (message.url != null) {
+            notificationBuilder.addAction(createAction(message.url!!))
         }
         manager.notify(NotificationID.id, notificationBuilder.build())
     }
