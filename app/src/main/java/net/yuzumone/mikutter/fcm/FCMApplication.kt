@@ -1,20 +1,22 @@
 package net.yuzumone.mikutter.fcm
 
 import android.app.Application
-import android.arch.persistence.room.Room
+import android.app.Service
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.fabric.sdk.android.Fabric
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.core.CrashlyticsCore
-import net.yuzumone.mikutter.fcm.db.MikutterMessageDatabase
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasServiceInjector
+import net.yuzumone.mikutter.fcm.di.DaggerApplicationComponent
+import javax.inject.Inject
 
-class FCMApplication : Application() {
+class FCMApplication : Application(), HasServiceInjector {
 
-    companion object {
-        lateinit var database: MikutterMessageDatabase
-    }
+    @Inject lateinit var dispatchingServiceInjector: DispatchingAndroidInjector<Service>
 
     override fun onCreate() {
         super.onCreate()
@@ -28,7 +30,12 @@ class FCMApplication : Application() {
         val crashlytics = Crashlytics.Builder()
                 .core(core).build()
         Fabric.with(this, crashlytics)
-        database = Room.databaseBuilder(this,
-                MikutterMessageDatabase::class.java, "database").build()
+        DaggerApplicationComponent.builder()
+                .create(this)
+                .inject(this)
+    }
+
+    override fun serviceInjector(): AndroidInjector<Service> {
+        return dispatchingServiceInjector
     }
 }
