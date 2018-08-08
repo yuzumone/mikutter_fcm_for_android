@@ -14,10 +14,20 @@ import com.google.firebase.messaging.RemoteMessage
 import java.util.concurrent.atomic.AtomicInteger
 import android.app.NotificationChannel
 import android.os.Build
+import dagger.android.AndroidInjection
+import net.yuzumone.mikutter.fcm.db.MikutterMessageDatabase
 import net.yuzumone.mikutter.fcm.entity.MikutterMessage
 import java.util.*
+import javax.inject.Inject
 
 class MikutterMessagingService : FirebaseMessagingService() {
+
+    @Inject lateinit var database: MikutterMessageDatabase
+
+    override fun onCreate() {
+        AndroidInjection.inject(this)
+        super.onCreate()
+    }
 
     override fun onMessageReceived(message: RemoteMessage?) {
         super.onMessageReceived(message)
@@ -28,7 +38,7 @@ class MikutterMessagingService : FirebaseMessagingService() {
     }
 
     private fun saveMessage(message: MikutterMessage) {
-        val dao = FCMApplication.database.messageDao()
+        val dao = database.messageDao()
         dao.insert(message)
     }
 

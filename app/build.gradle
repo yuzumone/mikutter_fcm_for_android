@@ -31,6 +31,7 @@ android {
 
 ext.lifecycle_version = "1.1.1"
 ext.room_version = "1.1.1"
+ext.dagger_version = "2.16"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -43,6 +44,11 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true
     }
