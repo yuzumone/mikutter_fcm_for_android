@@ -6,6 +6,9 @@ apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 27
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "net.yuzumone.mikutter.fcm"
         minSdkVersion 21
