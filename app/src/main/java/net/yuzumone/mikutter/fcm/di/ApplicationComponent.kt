@@ -8,7 +8,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     ApplicationModule::class,
-    ServiceModule::class
+    ServiceModule::class,
+    FragmentModule::class
 ])
 interface ApplicationComponent : AndroidInjector<FCMApplication> {
 

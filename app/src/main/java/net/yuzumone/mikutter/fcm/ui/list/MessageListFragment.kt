@@ -1,17 +1,48 @@
 package net.yuzumone.mikutter.fcm.ui.list
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.*
+import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.fragment_message_list.*
 import net.yuzumone.mikutter.fcm.R
+import net.yuzumone.mikutter.fcm.ui.common.MikutterMessageAdapter
 import net.yuzumone.mikutter.fcm.ui.setting.SettingFragment
+import javax.inject.Inject
 
 class MessageListFragment : Fragment() {
+
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+    private var viewModel: MessageListViewModel? = null
+
+    override fun onAttach(context: Context?) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_message_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)
+                .get(MessageListViewModel::class.java)
+        val adapter = MikutterMessageAdapter { message ->
+            // TODO
+        }
+        listMessage.adapter = adapter
+        listMessage.layoutManager = LinearLayoutManager(activity)
+        viewModel!!.allMessages.observe(this, Observer {
+            adapter.update(it)
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

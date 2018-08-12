@@ -2,6 +2,7 @@ package net.yuzumone.mikutter.fcm
 
 import android.app.Application
 import android.app.Service
+import android.support.v4.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -11,12 +12,14 @@ import com.crashlytics.android.core.CrashlyticsCore
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasServiceInjector
+import dagger.android.support.HasSupportFragmentInjector
 import net.yuzumone.mikutter.fcm.di.DaggerApplicationComponent
 import javax.inject.Inject
 
-class FCMApplication : Application(), HasServiceInjector {
+class FCMApplication : Application(), HasServiceInjector, HasSupportFragmentInjector {
 
     @Inject lateinit var dispatchingServiceInjector: DispatchingAndroidInjector<Service>
+    @Inject lateinit var dispatchingFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate() {
         super.onCreate()
@@ -38,4 +41,9 @@ class FCMApplication : Application(), HasServiceInjector {
     override fun serviceInjector(): AndroidInjector<Service> {
         return dispatchingServiceInjector
     }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+        return dispatchingFragmentInjector
+    }
+
 }
