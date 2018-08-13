@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import dagger.android.support.AndroidSupportInjection
@@ -40,6 +41,8 @@ class MessageListFragment : Fragment() {
         }
         listMessage.adapter = adapter
         listMessage.layoutManager = LinearLayoutManager(activity)
+        val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        listMessage.addItemDecoration(divider)
         viewModel!!.allMessages.observe(this, Observer {
             adapter.update(it)
         })
