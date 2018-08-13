@@ -13,6 +13,9 @@ interface MikutterMessageDao {
     @Query("SELECT * from message ")
     fun findAll(): LiveData<List<MikutterMessage>>
 
+    @Query("SELECT * from message ORDER BY id DESC LIMIT :limit ")
+    fun findOrderDescLimit(limit: Int): LiveData<List<MikutterMessage>>
+
     @Query("SELECT * FROM message WHERE id = :id ")
     fun findOne(id: String): LiveData<MikutterMessage>
 
