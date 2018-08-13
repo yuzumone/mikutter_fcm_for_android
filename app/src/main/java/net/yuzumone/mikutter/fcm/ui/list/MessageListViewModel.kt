@@ -8,4 +8,6 @@ class MessageListViewModel @Inject constructor(database: MikutterMessageDatabase
     private val dao = database.messageDao()
 
     val allMessages = dao.findAll()
+
+    fun getMessagesOrderDescLimit(limit: Int) = dao.findOrderDescLimit(limit)
 }
