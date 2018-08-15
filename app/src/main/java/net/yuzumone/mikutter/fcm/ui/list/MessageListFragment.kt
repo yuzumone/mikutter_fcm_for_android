@@ -15,6 +15,8 @@ import net.yuzumone.mikutter.fcm.R
 import net.yuzumone.mikutter.fcm.ui.common.MikutterMessageAdapter
 import net.yuzumone.mikutter.fcm.ui.setting.SettingFragment
 import javax.inject.Inject
+import android.content.Intent
+import android.net.Uri
 
 class MessageListFragment : Fragment() {
 
@@ -37,7 +39,10 @@ class MessageListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)
                 .get(MessageListViewModel::class.java)
         val adapter = MikutterMessageAdapter { message ->
-            // TODO
+            message.url?.let {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+                activity!!.startActivity(intent)
+            }
         }
         listMessage.adapter = adapter
         listMessage.layoutManager = LinearLayoutManager(activity)
