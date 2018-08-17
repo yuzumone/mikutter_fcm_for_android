@@ -3,15 +3,18 @@
 [![language kotlin](https://img.shields.io/badge/language-kotlin-green.svg)](#)
 [![minSdkVersion 21](https://img.shields.io/badge/minSdkVersion-21-red.svg)](#)
 [![compileSdkVersion 27](https://img.shields.io/badge/compileSdkVersion-27-yellow.svg)](#)
-[![version v1.0.0](https://img.shields.io/badge/version-v1.0.0-blue.svg)](#)
+[![version v1.1.0](https://img.shields.io/badge/version-v1.1.0-blue.svg)](#)
 
 ## これなん
 Firebase Cloud Messagingで通知を受け取ります．  
 mikutterに以下のプラグインを入れてイベントを呼び出すと通知が投げられます．  
 [mikutter_fcm](https://github.com/yuzumone/mikutter_fcm)
 
+## スクショ
+![list](./screenshots/list.png)
+
 ## ダウンロード
-[APK](https://github.com/yuzumone/mikutter_fcm_for_android/releases/download/v1.0.0/app-release.apk)
+[APK](https://github.com/yuzumone/mikutter_fcm_for_android/releases/download/v1.1.0/app-release.apk)
 
 ## ライブラリ
 - Android Support Library
