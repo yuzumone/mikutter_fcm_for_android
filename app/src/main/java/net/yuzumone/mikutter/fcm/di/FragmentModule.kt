@@ -5,6 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.yuzumone.mikutter.fcm.ui.list.MessageListFragment
+import net.yuzumone.mikutter.fcm.ui.setting.SettingFragment
 
 @Module
 abstract class FragmentModule {
@@ -14,4 +15,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector(modules = [ViewModelModule::class])
     abstract fun contributeMessageListFragment(): MessageListFragment
+
+    @ContributesAndroidInjector(modules = [ViewModelModule::class])
+    abstract fun contributeSettingFragment(): SettingFragment
 }
