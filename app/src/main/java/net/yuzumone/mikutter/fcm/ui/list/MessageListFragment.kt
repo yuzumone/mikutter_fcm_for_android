@@ -48,7 +48,7 @@ class MessageListFragment : Fragment() {
         listMessage.layoutManager = LinearLayoutManager(activity)
         val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         listMessage.addItemDecoration(divider)
-        viewModel!!.getMessagesOrderDescLimit(200).observe(this, Observer {
+        viewModel!!.getMessagesOrderDescLimit().observe(this, Observer {
             adapter.update(it)
         })
     }
