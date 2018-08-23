@@ -3,4 +3,7 @@
     <string name="channel_id">default</string>
     <string name="channel_name">Notification</string>
     <string name="setting">Setting</string>
+    <string name="general">General</string>
+    <string name="token">Token</string>
+    <string name="message_count">Message count</string>
 </resources>
