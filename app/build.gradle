@@ -5,17 +5,17 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     dataBinding {
         enabled = true
     }
     defaultConfig {
         applicationId "net.yuzumone.mikutter.fcm"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 3
         versionName "1.1.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "APP_ID", "\"${System.env.MIKUTTER_FCM_APP_ID}\"")
         buildConfigField("String", "API_KEY", "\"${System.env.MIKUTTER_FCM_API_KEY}\"")
         resValue("string", "google_app_id", "\"${System.env.MIKUTTER_FCM_APP_ID}\"")
@@ -39,15 +39,15 @@ ext.dagger_version = "2.16"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.google.firebase:firebase-messaging:17.1.0'
     implementation 'com.google.firebase:firebase-analytics:16.0.1'
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+    implementation 'androidx.room:room-runtime:2.1.0-alpha03'
+    kapt 'androidx.room:room-compiler:2.1.0-alpha03'
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger-android:$dagger_version"
@@ -57,6 +57,6 @@ dependencies {
         transitive = true
     }
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.1-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1-beta01'
 }

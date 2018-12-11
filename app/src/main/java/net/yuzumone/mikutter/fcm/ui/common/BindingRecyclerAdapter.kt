@@ -1,9 +1,9 @@
 package net.yuzumone.mikutter.fcm.ui.common
 
-import android.databinding.ViewDataBinding
-import android.support.annotation.UiThread
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.ViewDataBinding
+import androidx.annotation.UiThread
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 
 abstract class BindingRecyclerAdapter<T, V : ViewDataBinding> :

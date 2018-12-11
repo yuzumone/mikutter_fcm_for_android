@@ -3,7 +3,7 @@ package net.yuzumone.mikutter.fcm.perf
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import javax.inject.Inject
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty

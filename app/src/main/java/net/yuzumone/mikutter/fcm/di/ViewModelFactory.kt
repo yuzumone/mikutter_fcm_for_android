@@ -1,8 +1,8 @@
 package net.yuzumone.mikutter.fcm.di
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import javax.inject.Inject
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import javax.inject.Provider
 
 class ViewModelFactory @Inject

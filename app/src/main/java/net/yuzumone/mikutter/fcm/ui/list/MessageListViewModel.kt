@@ -1,6 +1,6 @@
 package net.yuzumone.mikutter.fcm.ui.list
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import net.yuzumone.mikutter.fcm.db.MikutterMessageDatabase
 import net.yuzumone.mikutter.fcm.perf.PreferenceStorage
 import javax.inject.Inject

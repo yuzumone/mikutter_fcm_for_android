@@ -1,6 +1,6 @@
 package net.yuzumone.mikutter.fcm.di
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

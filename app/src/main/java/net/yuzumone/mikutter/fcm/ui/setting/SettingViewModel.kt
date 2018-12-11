@@ -1,7 +1,7 @@
 package net.yuzumone.mikutter.fcm.ui.setting
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import net.yuzumone.mikutter.fcm.perf.SharedPreferenceStorage
 import javax.inject.Inject
 
