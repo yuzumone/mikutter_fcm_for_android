@@ -1,6 +1,6 @@
 package net.yuzumone.mikutter.fcm.ui.common
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import net.yuzumone.mikutter.fcm.R

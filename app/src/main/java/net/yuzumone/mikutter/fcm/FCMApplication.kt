@@ -2,7 +2,7 @@ package net.yuzumone.mikutter.fcm
 
 import android.app.Application
 import android.app.Service
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import com.google.firebase.analytics.FirebaseAnalytics

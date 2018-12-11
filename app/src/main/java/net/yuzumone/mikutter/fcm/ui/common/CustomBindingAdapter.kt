@@ -1,6 +1,6 @@
 package net.yuzumone.mikutter.fcm.ui.common
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
