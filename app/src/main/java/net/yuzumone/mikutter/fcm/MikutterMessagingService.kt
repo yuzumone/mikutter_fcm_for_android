@@ -65,7 +65,18 @@ class MikutterMessagingService : FirebaseMessagingService() {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
+        if (message.url != null) {
+            notificationBuilder.addAction(createAction(message.url!!))
+        }
         manager.notify(NotificationID.id, notificationBuilder.build())
+    }
+
+    private fun createAction(url: String): NotificationCompat.Action {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val stack = TaskStackBuilder.create(this)
+        stack.addNextIntentWithParentStack(intent)
+        val pendingIntent = stack.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+        return NotificationCompat.Action.Builder(android.R.drawable.ic_menu_send, url, pendingIntent).build()
     }
 
     class NotificationID {
