@@ -65,6 +65,8 @@ class MikutterMessagingService : FirebaseMessagingService() {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
+                .setStyle(NotificationCompat.BigTextStyle()
+                        .bigText(message.body))
         if (message.url != null) {
             notificationBuilder.addAction(createAction(message.url!!))
         }
