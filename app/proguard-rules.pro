@@ -22,29 +22,29 @@
 
 ## Android architecture components: Lifecycle
 # LifecycleObserver's empty constructor is considered to be unused by proguard
--keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
+-keepclassmembers class * implements androidx.lifecycle.LifecycleObserver {
     <init>(...);
 }
 # ViewModel's empty constructor is considered to be unused by proguard
--keepclassmembers class * extends android.arch.lifecycle.ViewModel {
+-keepclassmembers class * extends androidx.lifecycle.ViewModel {
     <init>(...);
 }
 # keep Lifecycle State and Event enums values
--keepclassmembers class android.arch.lifecycle.Lifecycle$State { *; }
--keepclassmembers class android.arch.lifecycle.Lifecycle$Event { *; }
+-keepclassmembers class androidx.lifecycle.Lifecycle$State { *; }
+-keepclassmembers class androidx.lifecycle.Lifecycle$Event { *; }
 # keep methods annotated with @OnLifecycleEvent even if they seem to be unused
 # (Mostly for LiveData.LifecycleBoundObserver.onStateChange(), but who knows)
 -keepclassmembers class * {
-    @android.arch.lifecycle.OnLifecycleEvent *;
+    @androidx.lifecycle.OnLifecycleEvent *;
 }
 
--keepclassmembers class * implements android.arch.lifecycle.LifecycleObserver {
+-keepclassmembers class * implements androidx.lifecycle.LifecycleObserver {
     <init>(...);
 }
 
--keep class * implements android.arch.lifecycle.LifecycleObserver {
+-keep class * implements androidx.lifecycle.LifecycleObserver {
     <init>(...);
 }
--keepclassmembers class android.arch.** { *; }
--keep class android.arch.** { *; }
--dontwarn android.arch.**
+-keepclassmembers class androidx.lifecycle.** { *; }
+-keep class androidx.lifecycle.** { *; }
+-dontwarn androidx.lifecycle.**
